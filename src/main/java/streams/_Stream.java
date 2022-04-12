@@ -1,6 +1,7 @@
 package streams;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static streams._Stream.Gender.FEMALE;
 import static streams._Stream.Gender.MALE;
@@ -16,6 +17,15 @@ public class _Stream {
                 new Person("Alice", FEMALE)
         );
 
+//        people.stream()
+//                .map(person -> person.gender)
+//                .collect(Collectors.toSet())
+//                .forEach(System.out::println);
+
+        boolean containsOnlyFemales = people.stream()
+                .allMatch(person -> FEMALE.equals(person.gender));
+
+        System.out.println(containsOnlyFemales);
     }
 
     static class Person {
